@@ -54,6 +54,8 @@ class _MainScreenState extends State<MainScreen> {
                     renderBtnAngka(2),
                     renderBtnAngka(3),
                     renderBtnOperator("/"),
+                    renderBtnAction("U"),
+                    renderBtnAction("C"),
                   ],
                 ),
                 Row(
@@ -63,6 +65,8 @@ class _MainScreenState extends State<MainScreen> {
                     renderBtnAngka(5),
                     renderBtnAngka(6),
                     renderBtnOperator("X"),
+                    renderBtnOperator2("("),
+                    renderBtnOperator2(")"),
                   ],
                 ),
                 Row(
@@ -72,6 +76,8 @@ class _MainScreenState extends State<MainScreen> {
                     renderBtnAngka(8),
                     renderBtnAngka(9),
                     renderBtnOperator("-"),
+                    renderBtnAction("X2"),
+                    renderBtnAction("V"),
                   ],
                 ),
                 Row(
@@ -81,6 +87,7 @@ class _MainScreenState extends State<MainScreen> {
                     renderBtnKoma(),
                     renderPersen(),
                     renderBtnOperator("+"),
+                    renderBtnAction("=", width: 84),
                   ],
                 ),
               ],
@@ -113,9 +120,11 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget genericButtonContainer({child: Widget}) {
-    return Container(
-      width: 40,
+  Widget genericButtonContainer({child: Widget, double width = 40}) {
+    print("generic button with width: $width");
+    // print(width);
+    return Container( 
+      width: width,
       height: 40,
       margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
       child: child,
@@ -139,6 +148,25 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {},
         child: Text("%"),
       ),
+    );
+  }
+
+  Widget renderBtnOperator2(String opr) {
+    return genericButtonContainer(
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text(opr),
+      ),
+    );
+  }
+
+  Widget renderBtnAction(String s, {double width = 40}) {
+    return genericButtonContainer(
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text(s),
+      ),
+      width: width,
     );
   }
 }
