@@ -27,6 +27,17 @@ class _MainScreenState extends State<MainScreen> {
     print("tambah koma");
   }
 
+  void btnActionPressed(String action) {
+    switch (action) {
+      case "C":
+        setState(() {
+          text1 = "";
+        });
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
                     renderBtnAngka(2),
                     renderBtnAngka(3),
                     renderBtnOperator("/"),
-                    renderBtnAction("U"),
+                    renderBtnAction("<-"),
                     renderBtnAction("C"),
                   ],
                 ),
@@ -123,7 +134,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget genericButtonContainer({child: Widget, double width = 40}) {
     print("generic button with width: $width");
     // print(width);
-    return Container( 
+    return Container(
       width: width,
       height: 40,
       margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
@@ -163,7 +174,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget renderBtnAction(String s, {double width = 40}) {
     return genericButtonContainer(
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          btnActionPressed(s);
+        },
         child: Text(s),
       ),
       width: width,
